@@ -1,5 +1,9 @@
 # Changelog
 
+## [test](https://github.com/thezainuddin/changelog-tag-release-action/tree/test) (08/10/2022)
+
+[Full Changelog](https://github.com/thezainuddin/changelog-tag-release-action/compare/1.0.13...test)
+
 ## [1.0.13](https://github.com/thezainuddin/changelog-tag-release-action/tree/1.0.13) (08/10/2022)
 
 [Full Changelog](https://github.com/thezainuddin/changelog-tag-release-action/compare/1.0.12...1.0.13)
