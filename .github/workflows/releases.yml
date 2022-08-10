@@ -47,7 +47,7 @@ jobs:
       - uses: avakar/tag-and-release@v1
         with:
           tag_name: ${{ github.event.inputs.new_tag }}
-          body: "Hello ALL"
+          body: ${{steps.extract_change.outputs.changelog}}
           commit: ${{ steps.commit_changelog.outputs.commit_sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
