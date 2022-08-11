@@ -41,7 +41,7 @@ jobs:
       - name: Extract new changes
         id: extract_change
         run: |
-          echo ::set-output name=changelog::$(cat CHANGELOG.html)
+          echo ::set-output name=changelog::$(cat CHANGELOG.md)
       
       - name: test
         id: tt
