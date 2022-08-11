@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }} 
           output: CHANGELOG.md
-          futureRelease: "1.0.4"
+          futureRelease: "1.0.1"
           dateFormat: "%m/%d/%Y"
       - name: Commit changes
         id: commit_changelog
@@ -47,7 +47,7 @@ jobs:
           echo ${{steps.extract_change.outputs.changelog}}
       - uses: avakar/tag-and-release@v1
         with:
-          tag_name: "1.0.4"
+          tag_name: "1.0.0"
           body: "<p> ${{steps.extract_change.outputs.changelog}} </p> "
           commit: ${{ steps.commit_changelog.outputs.commit_sha }}
         env:
