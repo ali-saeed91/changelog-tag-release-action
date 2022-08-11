@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }} 
           output: CHANGELOG.md
-          futureRelease: "1.0.1"
+          futureRelease: "1.0.2"
           dateFormat: "%m/%d/%Y"
       - name: Commit changes
         id: commit_changelog
@@ -40,15 +40,15 @@ jobs:
       - name: Extract new changes
         id: extract_change
         run: |
-          echo ::set-output name=changelog::$(cat CHANGELOG.md | grep -E '"1.0.0".*"1.0.1" ')
+          echo ::set-output name=changelog::$(cat CHANGELOG.md | grep -E '"1.0.1".*"1.0.2" ')
       - name: test
         id: tt
         run: |
           echo ${{steps.extract_change.outputs.changelog}}
       - uses: avakar/tag-and-release@v1
         with:
-          tag_name: "1.0.1"
-          body: "<code> testing </code> "
+          tag_name: "1.0.2"
+          body: "<code> ${{steps.extract_change.outputs.changelog}} </code> "
           commit: ${{ steps.commit_changelog.outputs.commit_sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
