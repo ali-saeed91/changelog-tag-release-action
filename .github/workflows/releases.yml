@@ -37,10 +37,15 @@ jobs:
         with:
           message: 'Update CHANGELOG.md'
           branch: master
+      - name: Instal Convertor
+        run: npm install showdown -g
+      - name: Convert md to html
+        run: showdown makehtml -i .\CHANGELOG.md -o .\CHANGELOG.html    
       - name: Extract new changes
         id: extract_change
         run: |
-          echo ::set-output name=changelog::$(cat CHANGELOG.md)
+          echo ::set-output name=changelog::$(cat CHANGELOG.html)
+      
       - name: test
         id: tt
         run: |
