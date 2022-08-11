@@ -8,6 +8,7 @@ on:
       new_tag:
         description: 'New Tag'
         required: true  
+
       prev_tag:
         description: 'Prev Tag'
         required: true  
@@ -27,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }} 
           output: CHANGELOG.md
-          futureRelease: ${{ github.event.inputs.new_tag }}
+          futureRelease: "1.0.1"
           dateFormat: "%m/%d/%Y"
       - name: Commit changes
         id: commit_changelog
@@ -39,14 +40,14 @@ jobs:
       - name: Extract new changes
         id: extract_change
         run: |
-          echo ::set-output name=changelog::$(cat CHANGELOG.md | grep -E '${{ github.event.inputs.prev_tag }}.*${{ github.event.inputs.new_tag }}')
+          echo ::set-output name=changelog::$(cat CHANGELOG.md | grep -E '"1.0.0".*"1.0.1" ')
       - name: test
         id: tt
         run: |
           echo ${{steps.extract_change.outputs.changelog}}
       - uses: avakar/tag-and-release@v1
         with:
-          tag_name: ${{ github.event.inputs.new_tag }}
+          tag_name: "1.0.1"
           body: "<code> testing </code> "
           commit: ${{ steps.commit_changelog.outputs.commit_sha }}
         env:
