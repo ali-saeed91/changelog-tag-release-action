@@ -40,7 +40,7 @@ jobs:
       - name: Extract new changes
         id: extract_change
         run: |
-          echo ::set-output name=changelog::$(cat CHANGELOG.md | grep -E '"1.0.1".*"1.0.2" ')
+          echo ::set-output name=changelog::$(cat CHANGELOG.md)
       - name: test
         id: tt
         run: |
